@@ -1,0 +1,28 @@
+.view-container {
+  margin: 50px;
+  position: relative;
+}
+
+.table-container {
+  position: relative;
+  max-height: 950px;
+  overflow: auto;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.filter-field-selector {
+  margin-right: 15px
+}
+
+.filter-text-input {
+  width: 300px
+}
+
+table {
+  width: 100%;
+}

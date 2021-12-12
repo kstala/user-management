@@ -1,0 +1,71 @@
+<div *ngIf="user$ | async as user">
+  <div *ngIf="hobbies$ | async as hobbies">
+    <form [formGroup]="userForm" class="user-form">
+      <div class="form-controls-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <input type="number" matInput formControlName="age">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input type="tel" matInput formControlName="phoneNumber">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Hobbies</mat-label>
+          <mat-select formControlName="hobbies" multiple>
+            <mat-option *ngFor="let hobby of hobbies" [value]="hobby.id">{{hobby.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="buttons-container">
+          <button mat-raised-button color="primary" [routerLink]="['']">Back</button>
+
+          <div class="action-buttons-container">
+            <button mat-raised-button color="warn" [disabled]="!userForm.dirty" (click)="reset(user)">Reset</button>
+            <button mat-raised-button color="primary" (click)="saveUser(user.id)"
+                    [disabled]="userForm.invalid || !userForm.dirty">Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
